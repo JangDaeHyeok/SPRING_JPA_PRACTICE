@@ -7,9 +7,11 @@ import com.jdh.jpaTest.model.entity.Member;
 
 import java.util.List;
 
+/*
+ *
+ */
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
-	Member findByMemberIdx(Long memberIdx);
-	Member findById(String id);
+	Member findByMemberId(Long id);
 	Member findByName(String name);
 }
