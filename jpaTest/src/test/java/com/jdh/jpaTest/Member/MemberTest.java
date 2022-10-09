@@ -2,7 +2,6 @@ package com.jdh.jpaTest.Member;
 
 import java.util.List;
 
-import com.jdh.jpaTest.model.entity.OrderItem;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,7 +10,6 @@ import com.jdh.jpaTest.model.entity.Member;
 import com.jdh.jpaTest.model.repository.MemberRepository;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.jpa.repository.JpaRepository;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
