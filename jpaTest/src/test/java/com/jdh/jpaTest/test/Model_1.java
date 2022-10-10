@@ -1,6 +1,7 @@
-package com.jdh.jpaTest.Member;
+package com.jdh.jpaTest.test;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Slf4j
-public class MemberTest {
+public class Model_1 {
 	@Autowired MemberRepository memberRepository;
 	
 	@Test
@@ -48,4 +49,35 @@ public class MemberTest {
 		List<Member> memberList = memberRepository.findAll();
 		for(Member member : memberList) log.info("[MemberTest] findAll => id : {}, name : {}", member.getId(), member.getName());
 	}
+
+	@Test
+	@Order(3)
+	@DisplayName("Member Update")
+	void update() {
+		Optional<Member> member = memberRepository.findById(9L);
+
+		member.ifPresent(selectMember -> {
+			selectMember.setStreet("소양로");
+			selectMember.setZipcode("56565");
+			memberRepository.save(selectMember);
+			log.info("[MemberTest] findAll => id : {}, name : {}, street : {}, zip : {}", selectMember.getId(), selectMember.getName(), selectMember.getStreet(), selectMember.getZipcode());
+		});
+	}
+
+	/*
+	@Test
+	@Order(4)
+	@DisplayName("Member remove")
+	void remove() {
+		Optional<Member> member = memberRepository.findById(1L);
+		member.ifPresent(selectMember -> {
+			memberRepository.delete(selectMember);
+		});
+
+		Optional<Member> member2 = memberRepository.findById(2L);
+		member2.ifPresent(selectMember -> {
+			memberRepository.delete(selectMember);
+		});
+	}
+	*/
 }
