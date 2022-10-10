@@ -5,7 +5,9 @@ import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -18,12 +20,30 @@ public class Orders {
     @Column(name = "order_id")
     private Long id;
 
-    @Column(name = "member_id")
-    private Long memberId;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @Temporal(TemporalType.DATE)
     private Date orderdate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    @OneToMany(mappedBy = "orders")
+    private List<OrderItem> orderItemList = new ArrayList<>();
+
+    public void setMember(Member member) {
+        // 기존 관계 제거
+        if(this.member != null) {
+            this.member.getOrderList().remove(this);
+        }
+        this.member = member;
+        member.getOrderList().add(this);
+    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        orderItemList.add(orderItem);
+        orderItem.setOrders(this);
+    }
 }

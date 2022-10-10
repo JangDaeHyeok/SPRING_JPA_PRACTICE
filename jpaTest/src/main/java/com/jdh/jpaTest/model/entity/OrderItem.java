@@ -16,10 +16,13 @@ public class OrderItem {
     @Column(name = "order_item_id")
     private Long id;
 
-    @Column(name = "item_id")
-    private Long itemId;
-    @Column(name = "order_id")
-    private Long orderId;
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Orders orders;
 
     private int orderprice;
     private int count;
