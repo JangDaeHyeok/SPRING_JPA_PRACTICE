@@ -47,7 +47,7 @@ public class Model_1 {
 	@DisplayName("Member Select")
 	void select() {
 		List<Member> memberList = memberRepository.findAll();
-		for(Member member : memberList) log.info("[MemberTest] findAll => id : {}, name : {}", member.getId(), member.getName());
+		for(Member member : memberList) log.info("[Model_1] findAll => id : {}, name : {}", member.getId(), member.getName());
 	}
 
 	@Test
@@ -60,7 +60,7 @@ public class Model_1 {
 			selectMember.setStreet("소양로");
 			selectMember.setZipcode("56565");
 			memberRepository.save(selectMember);
-			log.info("[MemberTest] findAll => id : {}, name : {}, street : {}, zip : {}", selectMember.getId(), selectMember.getName(), selectMember.getStreet(), selectMember.getZipcode());
+			log.info("[Model_1] find => id : {}, name : {}, street : {}, zip : {}", selectMember.getId(), selectMember.getName(), selectMember.getStreet(), selectMember.getZipcode());
 		});
 	}
 
