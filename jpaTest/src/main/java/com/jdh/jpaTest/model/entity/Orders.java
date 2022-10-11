@@ -24,6 +24,10 @@ public class Orders {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @OneToOne
+    @JoinColumn(name = "delivery_id")
+    private Delivery delivery;
+
     @Temporal(TemporalType.DATE)
     private Date orderdate;
 
