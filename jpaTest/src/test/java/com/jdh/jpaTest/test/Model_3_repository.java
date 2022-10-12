@@ -7,14 +7,9 @@ import com.jdh.jpaTest.model.repository.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.event.annotation.AfterTestClass;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -27,7 +22,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 // @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Slf4j
-public class Model_3 {
+public class Model_3_repository {
 
     @Autowired MemberRepository memberRepository;
     @Autowired OrdersRepository ordersRepository;
