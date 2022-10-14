@@ -1,6 +1,7 @@
 package com.jdh.jpaTest.model.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -24,6 +25,8 @@ public class OrderItem {
     @JoinColumn(name = "order_id")
     private Orders orders;
 
+    @ColumnDefault("0")
     private int orderprice;
+    @ColumnDefault("0")
     private int count;
 }

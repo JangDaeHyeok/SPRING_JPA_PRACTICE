@@ -2,6 +2,7 @@ package com.jdh.jpaTest.model.entity;
 
 import com.jdh.jpaTest.model.enums.OrderStatus;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -28,7 +29,9 @@ public class Orders {
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
 
+    @CreationTimestamp
     @Temporal(TemporalType.DATE)
+    @Column(nullable = false, updatable = false)
     private Date orderdate;
 
     @Enumerated(EnumType.STRING)
