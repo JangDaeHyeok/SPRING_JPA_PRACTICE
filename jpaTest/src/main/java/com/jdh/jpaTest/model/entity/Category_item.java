@@ -3,6 +3,8 @@ package com.jdh.jpaTest.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -16,7 +18,7 @@ public class Category_item {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne
+    @ManyToMany
     @JoinColumn(name = "item_id")
-    private Item item;
+    private List<Item> items = new ArrayList<>();
 }

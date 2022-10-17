@@ -9,8 +9,10 @@ import java.util.List;
 
 @Data
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "DTYPE")
 @DynamicUpdate
-public class Item {
+public abstract class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,13 +23,6 @@ public class Item {
     private int price;
     private int stockQuantity;
 
-    @OneToMany(mappedBy = "item")
+    @ManyToMany(mappedBy = "items")
     private List<Category_item> categoryItemList = new ArrayList<>();
-
-    // s :: 별도의 연결 엔티티를 사용하지 않는 경우 :: //
-    /*
-    @ManyToMany(mappedBy = "itemList")
-    private List<Category> categoryList = new ArrayList<>();
-    */
-    // e :: 별도의 연결 엔티티를 사용하지 않는 경우 :: //
 }
