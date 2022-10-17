@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @DynamicUpdate
 @Table(name = "ORDERS")
-public class Orders {
+public class Orders extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
