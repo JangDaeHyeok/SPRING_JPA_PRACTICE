@@ -47,7 +47,7 @@ public class Model_1 {
 	@DisplayName("Member Select")
 	void select() {
 		List<Member> memberList = memberRepository.findAll();
-		for(Member member : memberList) log.info("[Model_1] findAll => id : {}, name : {}", member.getId(), member.getName());
+		for(Member member : memberList) log.info("[Model_1] findAll => id : {}, name : {}, regDt : {}, modDt : {}", member.getId(), member.getName(), member.getRegDt(), member.getModDt());
 	}
 
 	@Test
