@@ -1,11 +1,9 @@
 package com.jdh.jpaTest.test;
 
-import com.jdh.jpaTest.model.entity.Album;
-import com.jdh.jpaTest.model.entity.Book;
-import com.jdh.jpaTest.model.entity.Member;
-import com.jdh.jpaTest.model.entity.Movie;
+import com.jdh.jpaTest.model.entity.*;
 import com.jdh.jpaTest.model.repository.ItemRepository;
 import com.jdh.jpaTest.model.repository.MemberRepository;
+import com.jdh.jpaTest.model.repository.ParentRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
@@ -24,6 +22,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class Model_4 {
     @Autowired ItemRepository itemRepository;
     @Autowired MemberRepository memberRepository;
+    @Autowired ParentRepository parentRepository;
 
     @Test
     @DisplayName("아이템_SINGLE_TABLE_테스트")
@@ -64,5 +63,21 @@ public class Model_4 {
 
         member.setName("최미애");
         member = memberRepository.saveAndFlush(member);
+    }
+
+    // 복합키 테스트
+    @Test
+    void 복합키_테스트() {
+        ParentId parentId = ParentId.builder()
+                .id1("id1")
+                .id2("id2")
+                .build();
+
+        Parent parent = Parent.builder()
+                .id(parentId)
+                .name("부모님 성함")
+                .build();
+
+        parentRepository.saveAndFlush(parent);
     }
 }
