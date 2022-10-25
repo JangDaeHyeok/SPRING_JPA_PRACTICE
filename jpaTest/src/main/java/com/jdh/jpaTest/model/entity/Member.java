@@ -22,9 +22,9 @@ public class Member extends BaseEntity {
 	
 	private String name;
 
-	private String city;
-	private String street;
-	private String zipcode;
+	// 값 타입 매핑
+	@Embedded
+	private Address address;
 
 	@OneToMany(mappedBy = "member")
 	private List<Orders> OrderList = new ArrayList<>();

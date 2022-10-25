@@ -19,9 +19,9 @@ public class Delivery {
     @OneToOne(mappedBy = "delivery")
     private Orders orders;
 
-    private String city;
-    private String street;
-    private String zipcode;
+    // 값 타입 매핑
+    @Embedded
+    private Address address;
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
