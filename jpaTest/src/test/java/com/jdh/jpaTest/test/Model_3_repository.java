@@ -1,5 +1,6 @@
 package com.jdh.jpaTest.test;
 
+import com.jdh.jpaTest.model.entity.Address;
 import com.jdh.jpaTest.model.entity.Member;
 import com.jdh.jpaTest.model.entity.Orders;
 import com.jdh.jpaTest.model.enums.OrderStatus;
@@ -40,9 +41,12 @@ public class Model_3_repository {
         // member entity
         Member member = new Member();
         member.setName("장대혁");
-        member.setCity("춘천");
-        member.setStreet("장학리");
-        member.setZipcode("01010");
+        Address address = Address.builder()
+                .city("춘천")
+                .street("장학리")
+                .zipcode("01010")
+                .build();
+        member.setAddress(address);
 
         // member insert
         memberRepository.save(member);
@@ -59,9 +63,9 @@ public class Model_3_repository {
         // then member
         assertThat(member).isNotNull();
         assertThat(member.getName()).isEqualTo("장대혁");
-        assertThat(member.getCity()).isEqualTo("춘천");
-        assertThat(member.getStreet()).isEqualTo(("장학리"));
-        assertThat(member.getZipcode()).isEqualTo("01010");
+        assertThat(member.getAddress().getCity()).isEqualTo("춘천");
+        assertThat(member.getAddress().getStreet()).isEqualTo(("장학리"));
+        assertThat(member.getAddress().getZipcode()).isEqualTo("01010");
 
         // then orders
         assertThat(orders).isNotNull();
